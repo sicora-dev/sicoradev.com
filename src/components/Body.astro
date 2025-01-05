@@ -1,0 +1,22 @@
+---
+import Projects from "./Projects.astro"
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+---
+
+<section class="flex flex-col max-w-4xl">
+  <h1 class="font-tile font-bold">sicoradev.com</h1>
+  <p class="font-body">
+    Bienvenidos a mi lobby, donde encontraréis todos mis proyectos detallados
+    uno a uno.
+  </p>
+  <Projects/>
+</section>
+
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+</style>

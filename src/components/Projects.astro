@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+
+const proyectos = await getCollection("proyectos");
+console.log(proyectos);
+---
+<div class="flex flex-col gap-2">
+    {
+        proyectos.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            url={project.data.url}
+            img={project.data.img}
+            desc={project.data.description}
+          />
+        ))
+      }
+</div>
+

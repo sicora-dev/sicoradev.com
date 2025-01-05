@@ -1,0 +1,8 @@
+---
+const { title, url, img, desc } = Astro.props;
+---
+
+<card class="flex flex-col rounded-md border border-light-highlight p-2">
+  <h2 class="hover:underline underline-offset-4 cursor-pointer"><a href={`/proyecto${url}`}>{title}</a></h2>
+  <p>{desc}</p>
+</card>
