@@ -1,6 +1,7 @@
 ---
 title: DevPath
 url: /devpath
+span: 2
 img: devpath.webp
 description: Tu mentor personal impulsado por IA - Obtén una ruta personalizada de 5 proyectos adaptada a tu stack y habilidades y crea proyectos increibles con DevPath
 ---

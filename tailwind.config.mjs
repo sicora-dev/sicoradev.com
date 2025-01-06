@@ -9,24 +9,29 @@ export default {
         body: ["Inter", "sans-serif"],
         title: ["Syne", "sans-serif"],
       },
-
+      backgroundImage: {
+        'light-shiny': 'radial-gradient(600px circle #dfdfdf, transparent 70%)',
+        'dark-shiny': 'radial-gradient(600px circle #272727, transparent 70%)',
+      },
       colors: {
         light: {
           background: "#FFFCF2",
           secondary: "#CCC5B9",
-          text: "#252422",
+          text: "#090909",
           buttons: "#EB5E28",
-          highlight: "#004BA8",
+          highlight: "#7FDBFF",
         },
         dark: {
           background: "#252422",
-          secondary: "#004BA8",
+          secondary: "#403D39",
           text: "#CCC5B9",
           buttons: "#EB5E28",
-          highlight: "#FFFCF2",
+          highlight: "#7FDBFF",
         },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 };

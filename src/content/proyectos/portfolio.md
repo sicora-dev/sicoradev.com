@@ -1,6 +1,7 @@
 ---
 title: Mi Portfolio
 url: /portfolio
+span: 1
 img: portfolio.webp
 description: Mi portfolio web elegante y minimalista, compatible con todos los dispositivos.
 ---

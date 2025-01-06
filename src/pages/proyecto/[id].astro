@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
@@ -13,8 +13,73 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { data } = project;
 const { title, img, description } = data;
+
+const { Content } = await render(project);
 ---
 
-<Layout title={title}>
-  <div>{title}</div>
+<Layout title={title} p="0">
+  <div
+    class="w-full h-full background-container before:dark:bg-black/50 before:bg-white/30 p-5 gap-5 flex flex-col items-center justify-center"
+    style={`background-image: url('/${img}')`}
+  >
+    <div class="max-w-4xl w-full flex items-start text-start">
+      <button
+        class="place-self-start font-title font-bold hover:underline cursor-pointer hover:text-light-highlight bg-light-background/30 dark:bg-dark-secondary/30 rounded-md p-2 shadow-[5px_5px_15px_-5px] shadow-light-highlight"
+        onclick="history.back()"
+        >Volver
+      </button>
+    </div>
+
+    <section
+      class="max-w-4xl flex flex-col items-center text-center shadow-[5px_5px_15px_-5px] shadow-light-highlight bg-light-background/30 dark:bg-dark-secondary/30 rounded-md p-5 max-h-96 overflow-y-scroll scrollbar-hide"
+    >
+      <div
+        id="titulo-project"
+        class="font-title font-bold text-2xl text-light-highlight"
+      >
+        {title}
+      </div>
+      <div class="md:text-xl text-[1.10rem] content-container"><Content /></div>
+    </section>
+    <a
+    href={`https://${project.slug}.sicoradev.com`}
+    target="_blank"
+      class="font-title font-bold hover:underline underline-offset-4 cursor-pointer hover:text-light-highlight bg-light-background/30  dark:bg-dark-secondary/30 rounded-md p-2 shadow-[5px_5px_15px_-5px] shadow-light-highlight"
+      >Ir al proyecto</a
+    >
+  </div>
 </Layout>
+<style>
+  .background-container {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+  }
+  .background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    
+    z-index: 1;
+  }
+
+  .background-container > * {
+    position: relative;
+    z-index: 2;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const strongElements = document.querySelectorAll(
+      ".content-container strong"
+    );
+    strongElements.forEach((el) => {
+      (el as HTMLElement).style.textDecoration = "underline";
+      (el as HTMLElement).style.color = "#7FDBFF";
+    });
+  });
+</script>

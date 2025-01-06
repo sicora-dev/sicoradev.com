@@ -1,8 +1,9 @@
 ---
 title: Nav3Studios
 url: /nav3studios
+span: 1
 img: nav3studios.webp
-description: Una web para organizar las reservas y servicios de nuestro estudio de música.
+description: Una web para organizar las reservas y servicios de mi estudio de música.
 ---
 **Nav3Studios** surgió como un proyecto entre amigos con una meta en común: abrir un pequeño estudio de música. Aunque yo no hago música, mis amigos son verdaderos artistas, y quise apoyarlos en este sueño. Además, el estudio también se convirtió en un espacio para desconectar y pasar el rato.
 
