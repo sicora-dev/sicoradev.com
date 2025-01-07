@@ -1,10 +1,10 @@
 ---
 const { title, p } = Astro.props;
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="" transition:animate="fade">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -13,21 +13,49 @@ import { ClientRouter } from 'astro:transitions';
     <title>{title}</title>
     <ClientRouter />
     <script>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      document.addEventListener("astro:page-load", () => {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+
+        const darkModeSwitch = document.getElementById("darkModeSwitch");
+        darkModeSwitch?.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+          if (!localStorage.getItem("theme")) {
+            const htmlClaslist = document.documentElement.classList;
+            if (htmlClaslist.contains("dark")) {
+              localStorage.setItem("theme", "dark");
+            } else {
+              localStorage.setItem("theme", "light");
+            }
+          } else if (localStorage.getItem("theme") === "dark") {
+            localStorage.setItem("theme", "light");
+          } else {
+            localStorage.setItem("theme", "dark");
+          }
+        });
+        const strongElements = document.querySelectorAll(
+          ".content-container strong"
+        );
+        strongElements.forEach((el) => {
+          (el as HTMLElement).style.textDecoration = "underline";
+          (el as HTMLElement).style.color = "#7FDBFF";
+        });
+      });
     </script>
   </head>
   <body
     class="dark:bg-dark-background bg-light-background dark:text-dark-text text-light-text font-title"
   >
-    <main class={`flex flex-col h-full w-full items-center justify-center p-${p}`}>
+    <main
+      class={`flex flex-col h-full w-full items-center justify-center p-${p}`}
+    >
       <slot />
     </main>
   </body>
