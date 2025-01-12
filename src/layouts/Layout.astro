@@ -1,15 +1,15 @@
 ---
-const { title, p } = Astro.props;
+const { title } = Astro.props;
 import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
-<html lang="es" class="" transition:animate="fade">
+<html lang="es" class="">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="La lobby de sicoradev"/>
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ClientRouter />
     <script>
@@ -54,7 +54,7 @@ import { ClientRouter } from "astro:transitions";
     class="dark:bg-dark-background bg-light-background dark:text-dark-text text-light-text font-title"
   >
     <main
-      class={`flex flex-col h-full w-full items-center justify-center p-${p}`}
+      class={`flex flex-col min-h-[100dvh] w-full items-center`}
     >
       <slot />
     </main>

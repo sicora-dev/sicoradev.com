@@ -1,10 +1,10 @@
 ---
-const { title, url, span, desc } = Astro.props;
-const colSpan = `col-span-${span}`;
+const { title, url, span, desc, img, slug } = Astro.props;
+
 ---
 
 <card
-  class={`flex flex-col rounded-md border border-light-highlight/50 p-2 ${colSpan} shiny after:bg-light-shiny after:dark:bg-dark-shiny relative overflow-hidden`}
+  class={`flex flex-col rounded-md border border-transparent p-2 shiny after:bg-light-shiny after:dark:bg-dark-shiny relative overflow-hidden items-center md:items-start text-center md:text-start`}
 >
   <input
     aria-hidden="true"
@@ -22,9 +22,10 @@ const colSpan = `col-span-${span}`;
     style="
       background: radial-gradient(600px circle at 24px 103px, rgba(97, 97, 97, 0.1), transparent 60%);
     "
-  >
-  </div>
+  />
+  <img transition:name={img} class="aspect-video max-w-80 rounded-md" src={`/${img}`}>
   <h3
+  transition:name={`title-${slug}`}
     class="hover:underline underline-offset-4 cursor-pointer font-title font-bold w-fit text-light-highlight"
   >
     <a href={`/proyecto${url}`}>{title}</a>

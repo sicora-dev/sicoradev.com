@@ -13,6 +13,8 @@ const proyectos = await getCollection("proyectos");
             url={project.data.url}
             span={project.data.span}
             desc={project.data.description}
+            img={project.data.img}
+            slug={project.slug}
           />
         ))
       }
