@@ -1,6 +1,5 @@
 ---
 const { title, url, span, desc, img, slug } = Astro.props;
-
 ---
 
 <card
@@ -22,10 +21,18 @@ const { title, url, span, desc, img, slug } = Astro.props;
     style="
       background: radial-gradient(600px circle at 24px 103px, rgba(97, 97, 97, 0.1), transparent 60%);
     "
-  />
-  <img transition:name={img} class="aspect-video max-w-80 rounded-md" src={`/${img}`}>
+  >
+  </div>
+  <a href={`/proyecto${url}`}
+    ><img
+      transition:name={img}
+      class="aspect-video max-w-80 rounded-md"
+      src={`/${img}`}
+    /></a
+  >
+
   <h3
-  transition:name={`title-${slug}`}
+    transition:name={`title-${slug}`}
     class="hover:underline underline-offset-4 cursor-pointer font-title font-bold w-fit text-light-highlight"
   >
     <a href={`/proyecto${url}`}>{title}</a>
